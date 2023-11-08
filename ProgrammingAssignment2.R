@@ -1,3 +1,4 @@
+## Luis Doreste Cabrera
 
 # Create a special matrix object that can cache its inverse
 makeCacheMatrix <- function(x = matrix()) {
@@ -19,12 +20,10 @@ makeCacheMatrix <- function(x = matrix()) {
   
   # Function to get the cached inverse (if available)
   getInverse <- function()  
-  
-  # Return a list of functions
-  list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
+    
+    # Return a list of functions
+    list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
-############################################################
-
 
 
 # Compute and cache the inverse of a matrix if available
