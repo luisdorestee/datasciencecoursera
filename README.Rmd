@@ -1,0 +1,42 @@
+---
+title: "Getting and Cleaning Data Course Project"
+author: "Luis Doreste"
+date: "2023-11-08"
+output: html_document
+---
+
+## Project Overview
+
+This project involves creating a tidy data set from the accelerometer data obtained from Samsung Galaxy S smartphones. The `run_analysis.R` script is designed to process this raw data into a structured format suitable for further analysis.
+
+## Script Execution
+
+The `run_analysis.R` script requires the Samsung data to be present in the working directory and performs a series of steps to clean and prepare the data:
+
+### Step 0: Preparation
+- Setting the working directory to where the Samsung data files are located on your local machine.
+- Loading the `dplyr` package, a powerful tool for data manipulation in R.
+
+### Step 1: Read the Dataset
+- Reading the feature and activity label files, as well as the training and test datasets, into R using the `read.table` function.
+
+### Step 2: Merge the Training and Test Sets
+- Combining the training and test datasets by stacking them vertically with the `rbind` function for the subject, feature (X), and activity (y) data.
+
+### Step 3: Label the Dataset with Descriptive Variable Names
+- Assigning descriptive variable names from `features.txt` to the dataset to make the data more comprehensible.
+- Combining the subject, activity, and feature datasets horizontally into one dataset with `cbind`.
+
+### Step 4: Extract Measurements on Mean and Standard Deviation
+- Isolating only the measurements that estimate the mean and standard deviation for each feature, which are identified by the presence of "mean()" or "std()" in their names.
+
+### Step 5: Apply Descriptive Activity Names
+- Replacing activity codes with descriptive activity names using the mapping provided in `activity_labels.txt` to make the activity data more interpretable.
+
+### Step 6: Create a Tidy Dataset
+- Generating a new dataset (`tidy_data`) that contains the average of each measurement variable for every activity and subject pair. This is done by:
+  - Grouping the data by subject and activity using `group_by`.
+  - Calculating the mean of each group for all measurement variables using `summarise(across(everything(), mean))`.
+- Saving this tidy dataset to a text file `tidy_data.txt`, ensuring it's ready for subsequent analysis.
+
+The script is well-commented, with explanations provided for each step to aid understanding.
